@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 33, 33, 33;
+  --background-start-rgb: 250, 240, 245;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 30, 15, 20;
+    --background-end-rgb: 15, 15, 15;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  min-height: 100vh;
+}
+
+/* 自定义表单样式 */
+input, textarea, select {
+  @apply px-4 py-2 border border-gray-300 rounded-md;
+}
+
+input:focus, textarea:focus, select:focus {
+  @apply outline-none ring-2 ring-rose-500/50 border-rose-500;
+}
+
+/* 添加页面转场动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* 心形背景装饰 */
+.heart-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.05;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(239, 68, 68, 0.2) 0%, transparent 20%),
+    radial-gradient(circle at 80% 30%, rgba(239, 68, 68, 0.1) 0%, transparent 25%),
+    radial-gradient(circle at 40% 70%, rgba(239, 68, 68, 0.1) 0%, transparent 25%),
+    radial-gradient(circle at 80% 80%, rgba(239, 68, 68, 0.2) 0%, transparent 20%);
+}
+
+/* 响应式调整 */
+@media (max-width: 640px) {
+  h1 {
+    @apply text-3xl;
+  }
+  
+  h2 {
+    @apply text-xl;
+  }
+}
